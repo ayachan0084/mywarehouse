@@ -39,7 +39,7 @@ public class Product {
         this.quantity = quantity;
     }
 
-//Геттеры и сеттеры, нужные для того
+//Геттеры и сеттеры
     public long getId() {
         return id;
     }
