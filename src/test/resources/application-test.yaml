@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: demo-test
+
+  # Keep the initialization mode so your schema.sql runs inside the Postgres container
+  sql:
+    init:
+      mode: always
+
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: DEBUG

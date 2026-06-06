@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: demo
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mywarehouse
+    username: ayachan0084
+    password: nokiabl4c055
