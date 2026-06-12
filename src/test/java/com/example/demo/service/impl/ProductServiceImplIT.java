@@ -6,10 +6,7 @@ import com.example.demo.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.junit.jupiter.Container;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,12 +14,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ProductServiceImplIT extends BaseIntegrationTest {
-
-    // Объявляем контейнер PostgreSQL. Аннотация @ServiceConnection автоматически
-    // свяжет параметры подключения (url/user/password) с источником данных Spring.
-    @Container
-    @ServiceConnection
-    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15-alpine");
 
     @Autowired
     private ProductService productService;

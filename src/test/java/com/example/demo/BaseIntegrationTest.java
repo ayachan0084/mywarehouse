@@ -12,6 +12,8 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @Testcontainers
 public abstract class BaseIntegrationTest {
 
+    // Объявляем контейнер PostgreSQL. Аннотация @ServiceConnection автоматически
+    // свяжет параметры подключения (url/user/password) с источником данных Spring.
     @Container
     @ServiceConnection
     protected static final PostgreSQLContainer<?> postgres =

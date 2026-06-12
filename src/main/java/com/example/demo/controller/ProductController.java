@@ -5,6 +5,7 @@ import com.example.demo.dto.ProductUpscaleDto;
 import com.example.demo.mapper.ProductMapper;
 import com.example.demo.model.Product;
 import com.example.demo.service.ProductService;
+import com.example.demo.validation.ValidationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,8 @@ public class ProductController {
 
     private final ProductMapper mapper;
     private final ProductService productService;
+    private final ValidationService validationService;
+
 
     @GetMapping
     public ResponseEntity<List<ProductResponseDto>> getProducts(
@@ -38,6 +41,9 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<ProductResponseDto> saveProduct(@RequestBody ProductUpscaleDto product) {
+        if (!validationService.isValid(product)) {
+            return ResponseEntity.badRequest().build();
+        }
         Product model = productService.saveProduct(mapper.toModel(product));
         ProductResponseDto dto = mapper.toDto(model);
         return ResponseEntity.ok(dto);
